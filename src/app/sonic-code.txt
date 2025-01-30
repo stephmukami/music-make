@@ -1,0 +1,164 @@
+MELODY 1
+use_bpm 90  # Set the tempo
+
+define :play_chords do
+  play chord(:c, :major), sustain: 2
+  sleep 1
+  play chord(:g, :major), sustain: 2
+  sleep 1
+  play chord(:f, :major), sustain: 2
+  sleep 1
+  play chord(:a, :minor), sustain: 2
+  sleep 1
+end
+
+define :melody do
+  use_synth :piano
+  play_pattern_timed [:e, :g, :a, :g, :c, :b, :g, :e], [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1]
+end
+
+# Adding the ambi_choir sample for a smooth ambient background
+live_loop :choir do
+  sample :ambi_choir, rate: 0.5, sustain: 2
+  sleep 4  # Keep the choir sample playing in the background
+end
+
+live_loop :chords do
+  play_chords
+end
+
+live_loop :melody do
+  sync :chords
+  melody
+end
+
+
+MELODY 2
+use_bpm 100  # Set the tempo
+
+define :play_chords do
+  play chord(:c, :major), sustain: 2
+  sleep 1
+  play chord(:g, :major), sustain: 2
+  sleep 1
+  play chord(:f, :major), sustain: 2
+  sleep 1
+  play chord(:a, :minor), sustain: 2
+  sleep 1
+end
+
+define :melody do
+  use_synth :piano
+  play_pattern_timed [:e, :g, :a, :g, :c, :b, :g, :e], [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1]
+end
+
+# Adding the ambi_choir sample for a smooth ambient background
+live_loop :choir do
+  sample :ambi_choir, rate: 0.5, sustain: 2
+  sleep 4  # Keep the choir sample playing in the background
+end
+
+live_loop :chords do
+  play_chords
+end
+
+live_loop :melody do
+  sync :chords
+  melody
+end
+
+MELODY 3
+
+use_bpm 100  # Set the tempo
+
+# Define chord progressions as variables
+define :chord_progression do |chords|
+  chords.each do |chord|
+    play chord, sustain: 2
+    sleep 1
+  end
+end
+
+# Define melody as a variable
+define :melody do |notes|
+  use_synth :piano
+  play_pattern_timed notes, [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1]
+end
+
+# Adding the ambi_choir sample for smooth background
+live_loop :choir do
+  sample :ambi_choir, rate: 0.5, sustain: 2
+  sleep 4  # Keep the choir sample playing in the background
+end
+
+# Different chord progressions for puzzle swapping
+chords_1 = [chord(:c, :major), chord(:g, :major), chord(:f, :major), chord(:a, :minor)]
+chords_2 = [chord(:e, :major), chord(:d, :major), chord(:g, :major), chord(:b, :minor)]
+
+# Different melody options to mix and match
+melody_1 = [:e, :g, :a, :g, :c, :b, :g, :e]
+melody_2 = [:c, :d, :e, :f, :g, :a, :g, :f]
+
+# Live loops where user can mix and match
+live_loop :chords do
+  # Swap this with chords_1 or chords_2 for different progressions
+  chord_progression(chords_1)  # Try changing this to `chords_2` for a different progression
+end
+
+live_loop :melody do
+  sync :chords
+  # Swap this with melody_1 or melody_2 for a different melody
+  melody(melody_1)  # Try changing this to `melody_2` for a different melody
+end
+
+CODE WITH TRANSPOSE FEATURE
+use_bpm 100  # Set the tempo
+
+# Define chord progressions as variables
+define :chord_progression do |chords|
+  chords.each do |chord|
+    play chord, sustain: 2
+    sleep 1
+  end
+end
+
+# Define melody as a variable
+define :melody do |notes|
+  use_synth :piano
+  play_pattern_timed notes, [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1]
+end
+
+# Adding the ambi_choir sample for smooth background
+live_loop :choir do
+  sample :ambi_choir, rate: 0.5, sustain: 2
+  sleep 4  # Keep the choir sample playing in the background
+end
+
+# Different chord progressions for puzzle swapping
+chords_1 = [chord(:c, :major), chord(:g, :major), chord(:f, :major), chord(:a, :minor)]
+chords_2 = [chord(:e, :major), chord(:d, :major), chord(:g, :major), chord(:b, :minor)]
+
+# Different melody options to mix and match
+melody_1 = [:e, :g, :a, :g, :c, :b, :g, :e]
+melody_2 = [:c, :d, :e, :f, :g, :a, :g, :f]
+
+# Function to transpose melody
+define :transpose_melody do |melody, steps|
+  melody.map { |note| note + steps }
+end
+
+# Transpose melody_1 up by 2 semitones (whole step) to change from C major to D major
+melody_1_transposed = transpose_melody(melody_1, 0)
+
+# Live loops where user can mix and match
+live_loop :chords do
+  # Swap this with chords_1 or chords_2 for different progressions
+  chord_progression(chords_1)  # Try changing this to `chords_2` for a different progression
+end
+
+live_loop :melody do
+  sync :chords
+  # Swap this with transposed melody or other melodies for a different sound
+  melody(melody_1_transposed)  # Try changing this to `melody_2` or other transposed versions
+end
+
