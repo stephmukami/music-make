@@ -12,8 +12,10 @@
     "africastalking": "^0.7.2",
     "axios": "^1.7.9",
     "next": "15.1.6",
+    "node-osc": "^9.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.1",
     "tone": "^15.0.4"
   },
   "devDependencies": {
