@@ -162,3 +162,7 @@ live_loop :melody do
   melody(melody_1_transposed)  # Try changing this to `melody_2` or other transposed versions
 end
 
+
+
+TO TEST OUT 
+Invoke-RestMethod -Uri "http://localhost:8080/api/send-ui-airtime" -Method Post -Headers @{"Content-Type"="application/json"} -Body (@{phoneNumber="+254797645137"; airtimeAmount=5} | ConvertTo-Json)
